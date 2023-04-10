@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @Autowired
-    private IDemoUserSecurityService userDetailsService;
+    private IDemoUserSecurityService userSecurityService;
 
     @PostMapping("/signin")
     public BearerToken authenticateUser(@RequestBody LoginDto rLoginDto) {
-        return userDetailsService.authenticate(rLoginDto);
+        return userSecurityService.authenticate(rLoginDto);
     }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto rSignUpDto) {
-        return userDetailsService.register(rSignUpDto);
+        return userSecurityService.register(rSignUpDto);
     }
 }
